@@ -1,131 +1,202 @@
-// Basic JavaScript functionality
-
-// document.addEventListener('DOMContentLoaded', () => {
-  // const form = document.getElementById('contact-form');
-  // form.addEventListener('submit', (e) => {
-     // e.preventDefault(); // Prevent form submission
-     // alert('Thank you for your message! We will get back to you soon.');
-     // form.reset(); // Clear the form fields
-   // });
-  // });
-
-document.addEventListener('DOMContentLoaded', function() {
-  let learnMoreButton = document.getElementById('learn-more-button');
-  var emailPopup = document.getElementById('email-popup');
-  var popupClose = document.querySelector('.popup-close');
-
-  learnMoreButton.addEventListener('click', function(event) {
-    // event.preventDefault();
-    console.log('Learn More button clicked'); // Debugging statement
-    emailPopup.style.display = 'flex'; // Show the popup
-  });
-
-  popupClose.addEventListener('click', function() {
-    emailPopup.style.display = 'none'; // Hide the popup
-  });
-
-  // Close the popup when clicking outside of the popup content
-  window.addEventListener('click', function(event) {
-    if (event.target == emailPopup) {
-      emailPopup.style.display = 'none';
-    }
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  setupNewsletter();
+  setupAudioPlayers();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  let downloadButton = document.getElementById('download-button');
-  var emailPopup = document.getElementById('email-popup');
-  var popupClose = document.querySelector('.popup-close');
+function setupNewsletter() {
+  const popup = document.getElementById("email-popup");
+  const closeButton = popup?.querySelector(".popup-close");
+  const form = document.getElementById("email-form");
+  const openButtons = document.querySelectorAll("[data-open-newsletter]");
 
-  downloadButton.addEventListener('click', function(event) {
-    // event.preventDefault();
-    console.log('Download button clicked'); // Debugging statement
-    emailPopup.style.display = 'flex'; // Show the popup
-  });
+  if (!popup || !closeButton || !form) {
+    return;
+  }
 
-  popupClose.addEventListener('click', function() {
-    emailPopup.style.display = 'none'; // Hide the popup
-  });
+  const storageKey = "metalsix-newsletter-dismissed";
+  let previousFocus = null;
 
-  // Close the popup when clicking outside of the popup content
-  window.addEventListener('click', function(event) {
-    if (event.target == emailPopup) {
-      emailPopup.style.display = 'none';
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  var currentAudio = null;
-
-  window.togglePlayPause = function(audioId, button) {
-    var audioElement = document.getElementById(audioId);
-    var progressBar = document.getElementById('progress-bar-' + audioId.split('-')[1]);
-    var currentTimeElement = document.getElementById('current-time-' + audioId.split('-')[1]);
-    var durationElement = document.getElementById('duration-' + audioId.split('-')[1]);
-
-    // Ensure metadata is loaded
-    if (audioElement.readyState < 2) {
-      audioElement.addEventListener('loadedmetadata', function() {
-        durationElement.textContent = formatTime(audioElement.duration);
-        playPauseAudio(audioElement, button, progressBar, currentTimeElement);
-      });
-      audioElement.load();
-    } else {
-      durationElement.textContent = formatTime(audioElement.duration);
-      playPauseAudio(audioElement, button, progressBar, currentTimeElement);
+  const rememberDismissal = () => {
+    try {
+      localStorage.setItem(storageKey, "true");
+    } catch {
+      // The popup still works when storage is disabled.
     }
   };
 
-  function playPauseAudio(audioElement, button, progressBar, currentTimeElement) {
-    // Pause the currently playing audio
-    if (currentAudio && currentAudio !== audioElement) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      var currentButton = document.querySelector('.control-button i.fa-pause');
-      if (currentButton) {
-        currentButton.classList.remove('fa-pause');
-        currentButton.classList.add('fa-play');
+  const wasDismissed = () => {
+    try {
+      return localStorage.getItem(storageKey) === "true";
+    } catch {
+      return false;
+    }
+  };
+
+  const openPopup = () => {
+    previousFocus = document.activeElement;
+    popup.classList.add("is-visible");
+    popup.setAttribute("aria-hidden", "false");
+    document.body.classList.add("popup-open");
+    closeButton.focus();
+  };
+
+  const closePopup = ({ remember = true } = {}) => {
+    popup.classList.remove("is-visible");
+    popup.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("popup-open");
+
+    if (remember) {
+      rememberDismissal();
+    }
+
+    if (previousFocus instanceof HTMLElement) {
+      previousFocus.focus();
+    }
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", openPopup);
+  });
+
+  closeButton.addEventListener("click", () => closePopup());
+
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      closePopup();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && popup.classList.contains("is-visible")) {
+      closePopup();
+    }
+  });
+
+  form.addEventListener("submit", () => {
+    if (form.checkValidity()) {
+      rememberDismissal();
+      window.setTimeout(() => closePopup({ remember: false }), 150);
+    }
+  });
+
+  if (!wasDismissed()) {
+    window.setTimeout(openPopup, 4000);
+  }
+}
+
+function setupAudioPlayers() {
+  const audioElements = Array.from(document.querySelectorAll("audio[id^='audio-']"));
+  const status = document.getElementById("audio-status");
+  let currentAudio = null;
+
+  const formatTime = (totalSeconds) => {
+    if (!Number.isFinite(totalSeconds)) {
+      return "0:00";
+    }
+
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = Math.floor(totalSeconds % 60).toString().padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  };
+
+  const elementsFor = (audio) => {
+    const trackKey = audio.id.replace("audio-", "");
+    return {
+      button: document.querySelector(`[data-audio-id="${audio.id}"]`),
+      currentTime: document.getElementById(`current-time-${trackKey}`),
+      duration: document.getElementById(`duration-${trackKey}`),
+      progress: document.getElementById(`progress-bar-${trackKey}`),
+    };
+  };
+
+  const setButtonState = (audio, isPlaying) => {
+    const { button } = elementsFor(audio);
+    if (!button) {
+      return;
+    }
+
+    const icon = button.querySelector("i");
+    const trackName = audio.closest(".track")?.querySelector("h3")?.textContent || "track";
+    icon?.classList.toggle("fa-play", !isPlaying);
+    icon?.classList.toggle("fa-pause", isPlaying);
+    button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${trackName}`);
+  };
+
+  const updateProgress = (audio) => {
+    const { currentTime, duration, progress } = elementsFor(audio);
+    const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+
+    if (currentTime) {
+      currentTime.textContent = formatTime(audio.currentTime);
+    }
+    if (duration) {
+      duration.textContent = formatTime(audio.duration);
+    }
+    if (progress) {
+      progress.style.width = `${percent}%`;
+    }
+  };
+
+  audioElements.forEach((audio) => {
+    const { button } = elementsFor(audio);
+    const seekButton = document.querySelector(`[data-seek-for="${audio.id}"]`);
+
+    audio.addEventListener("loadedmetadata", () => updateProgress(audio));
+    audio.addEventListener("timeupdate", () => updateProgress(audio));
+    audio.addEventListener("pause", () => setButtonState(audio, false));
+    audio.addEventListener("play", () => setButtonState(audio, true));
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+      currentAudio = null;
+      setButtonState(audio, false);
+      updateProgress(audio);
+    });
+    audio.addEventListener("error", () => {
+      if (status) {
+        status.textContent = "This track could not be loaded. Please refresh and try again.";
       }
-    }
-
-    // Toggle play/pause for the clicked audio element
-    if (audioElement.paused) {
-      audioElement.play();
-      button.querySelector('i').classList.remove('fa-play');
-      button.querySelector('i').classList.add('fa-pause');
-      currentAudio = audioElement;
-    } else {
-      audioElement.pause();
-      button.querySelector('i').classList.remove('fa-pause');
-      button.querySelector('i').classList.add('fa-play');
-      currentAudio = null;
-    }
-
-    // Update icon when audio ends
-    audioElement.addEventListener('ended', function() {
-      button.querySelector('i').classList.remove('fa-pause');
-      button.querySelector('i').classList.add('fa-play');
-      currentAudio = null;
-      progressBar.style.width = '0%';
-      currentTimeElement.textContent = '0:00';
+      setButtonState(audio, false);
     });
 
-    // Update progress bar and current time as the audio plays
-    audioElement.addEventListener('timeupdate', function() {
-      var progress = (audioElement.currentTime / audioElement.duration) * 100;
-      progressBar.style.width = progress + '%';
-      currentTimeElement.textContent = formatTime(audioElement.currentTime);
-    });
-  }
+    button?.addEventListener("click", async () => {
+      if (status) {
+        status.textContent = "";
+      }
 
-  // Helper function to format time in minutes and seconds
-  function formatTime(seconds) {
-    var minutes = Math.floor(seconds / 60);
-    var seconds = Math.floor(seconds % 60);
-    if (seconds < 10) {
-      seconds = '0' + seconds;
+      if (!audio.paused) {
+        audio.pause();
+        currentAudio = null;
+        return;
+      }
+
+      if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+      }
+
+      try {
+        await audio.play();
+        currentAudio = audio;
+      } catch {
+        if (status) {
+          status.textContent = "Playback was blocked. Select play again to start the track.";
+        }
+        setButtonState(audio, false);
+      }
+    });
+
+    seekButton?.addEventListener("click", (event) => {
+      if (!audio.duration) {
+        return;
+      }
+
+      const bounds = seekButton.getBoundingClientRect();
+      const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
+      audio.currentTime = ratio * audio.duration;
+      updateProgress(audio);
+    });
+
+    if (audio.readyState >= 1) {
+      updateProgress(audio);
     }
-    return minutes + ':' + seconds;
-  }
-});
+  });
+}

@@ -1,306 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<header>
-		<div class="social-icons">
-		  <a href="https://www.facebook.com/Metalsix/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-		  <a href="https://www.instagram.com/metalsix.official/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-		  <a href="https://www.youtube.com/@metalsix.official" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
-		  <a href="https://www.tiktok.com/@metalsix.official" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
-		  <a href="https://x.com/metalsix_" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-		</div>
-	  </header>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metalsix</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .section {
-      text-align: center;
-    }
-    .about-section .section-overlay {
-      background: rgba(0, 0, 0, 0.67);
-      padding: 50px 20px;
-    }
-    .image {
-      max-width: 50%;
-      height: auto;
-    }
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #940000;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-	  outline: 2px solid #a6a6a6;
-    }
-    .button:hover {
-      background-color: #000000;
-    }
-  </style>
-</head>
-<!-- Popup Container -->
-<div id="email-popup" class="popup">
-	<div class="popup-content">
-	  <span class="popup-close">&times;</span>
-	  <h2>Subscribe to Our Newsletter</h2>
-	  <p>Get updates on new music, exclusive offers, and more!</p>
-	  <form novalidate
-		id="email-form" 
-		action="https://metalsix.us20.list-manage.com/subscribe/post?u=d9a72fb0d01fad9c23cfd0a03&amp;id=9afacad44d" 
-		method="POST" 
-		target="_blank">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Metalsix creates old-school instrumental death metal with brutal rhythmic riffs and bone-crushing drums.">
+    <meta name="theme-color" content="#050505">
+    <meta property="og:title" content="Metalsix | Old-School Instrumental Death Metal">
+    <meta property="og:description" content="Original old-school instrumental death metal. Listen to Metalsix, watch the latest video, and shop official merchandise.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://metalsix.com/">
+    <meta property="og:image" content="https://metalsix.com/Images/Metalsix_Blade_Square.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Metalsix | Old-School Instrumental Death Metal</title>
+    <link rel="icon" href="Images/Metalsix_Blade_Square.jpg" type="image/jpeg">
+    <link rel="preload" href="fonts/armyd___-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="JS/script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      <nav class="social-icons" aria-label="Metalsix social media">
+        <a href="https://www.facebook.com/Metalsix/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Metalsix on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/metalsix.official/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Metalsix on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@metalsix.official" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Metalsix on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.tiktok.com/@metalsix.official" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Metalsix on TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+        <a href="https://x.com/metalsix_" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Metalsix on X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </nav>
+    </header>
 
-		<!-- Hidden Input Fields -->
-		<input type="hidden" name="u" value="d9a72fb0d01fad9c23cfd0a03">
-		<input type="hidden" name="id" value="9afacad44d">
-
-		<!-- Email Input -->
-		<input 
-		  type="email" 
-		  id="email-input" 
-		  name="EMAIL" 
-		  placeholder="Enter your email" 
-		  required>
-		
-		<!-- Hidden Bot Protection Field -->
-		<div style="position: absolute; left: -5000px;" aria-hidden="true">
-		  <input type="text" name="b_d9a72fb0d01fad9c23cfd0a03_9afacad44d" tabindex="-1" value="">
-		</div>
-		
-		<!-- Submit Button -->
-		<button type="submit" class="popup-submit">Subscribe</button>
-	  </form>
-	</div>
-</div>
-
-<!-- Mailchimp Validation Script -->
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-<script type="text/javascript">
-  (function($) {
-    window.fnames = new Array(); 
-    window.ftypes = new Array();
-    fnames[0] = 'EMAIL'; 
-    ftypes[0] = 'email';
-  }(jQuery));
-  var $mcj = jQuery.noConflict(true);
-</script>
-
-
-<!-- About Section -->
-<div class="section about-section">
-	<div class="section-overlay">
-	  <h1>Old School Instrumental Death Metal</h1>
-	  <img src="Images/Metalsix_Logo_White.png" alt="Metalsix Logo" class="image fade-in-image">
-	  <div>
-		<p>🔥 Chaotic Darkness Unleashed 🔥</p>
-		<p>Brutal Chugging Riffs and Bone-Crushing Drums!</p>
-	  </div>
-	  <a href="#music" id="learn-more-button" class="button">Learn More</a>
-	  <p class="army_of_darknessregular"></p>
-	</div>
-  </div>
-
-  <script src="JS/script.js"></script>
-
-  <!-- Music Section -->
-  <div class="section music-section">
-	<div class="section-overlay">
-      <h1>Music</h1>
-      <div>
-		<img src="Images/Viking Funeral.jpg" alt="Album Cover" class="image">
-        <img src="Images/Devils.jpg" alt="Album Cover" class="image">
-		<img src="Images/The Master.jpg" alt="Album Cover" class="image">
-		<img src="Images/Skeletons.jpg" alt="Album Cover" class="image">
-		<img src="Images/Unsound.jpg" alt="Album Cover" class="image">
-      </div>
-	  
-      <h2>New Music Coming Soon!</h2>
-      <!-- <a href="https://metalsix.com/coming-soon/" class="button">BUY CD</a> -->
-      <a href="https://open.spotify.com/artist/1xVHS0RWa8JxRRHK8wIK8u" class="button">Spotify</a>
-      <a href="https://music.apple.com/us/artist/metalsix/1475066050" class="button">iTunes</a>
-      <a href="#music" id="download-button" class="button">Download</a>
-	</div>
-  </div>
-
-<!-- Bio Section -->
-<div class="section bio-section">
-	<div class="section-overlay">
-	  <h1>BIO</h1>
-	  <p>I write all original Old School Instrumental Death Metal mainly focused on very heavy rhythmic guitar riffs. I am currently working on an EP for release later this year.  I also have songs streaming on Spotify & Apple Music. Merch is available at my online store at <a href="https://metalsixshop.com/" class="link">metalsixshop.com</a>.</p>
-	  <p>If you're a Metalhead, check it out!</p>
-	  <h1>REVIEWS</h1>
-	  <blockquote class="cusom-quote">
-		<p>"😵😵😵holy shit, man that riff was heavy as pull a damn tank whit bare hands, 😎😎😎definitely for wake up,,,,after hang over together with a strong Irish coffee,😬👍🤘"</p>
-		<p>"Pretty fucking heavy my friend🤘"</p>
-		<p>"That is such a throaty tone and I dig it! ☠️🤘🏻"</p>
-		<p>"I think man super heavy killer stuff"</p>
-	  </blockquote>
-	</div>
-  </div>
-
-<!-- Listen Section -->
-<div class="section listen-section">
-  <h1>Listen</h1>
-  <div class="section-overlay">
-    <div class="dark-audio-player">
-      <!-- Viking Funeral -->
-      <div class="player-header">
-        <div class="track-info">
-          <h3 class="track-title">Viking Funeral</h3>
-        </div>
-      </div>
-      <div class="waveform">
-        <div class="progress-bar" id="progress-bar-viking_funeral"></div>
-      </div>
-      <div class="audio-controls">
-        <button class="control-button" onclick="togglePlayPause('audio-viking_funeral', this)">
-          <i class="fas fa-play"></i>
-        </button>
-		<span class="current-time" id="current-time-viking_funeral">0:00</span> / 
-        <span class="track-duration" id="duration-viking_funeral">0:00</span>
-      </div>
-      <audio id="audio-viking_funeral" src="Audio/viking_funeral.mp3"></audio>
-
-      <!-- Devils -->
-      <div class="player-header">
-        <div class="track-info">
-          <h3 class="track-title">Devils</h3>
-        </div>
-      </div>
-      <div class="waveform">
-        <div class="progress-bar" id="progress-bar-devils"></div>
-      </div>
-      <div class="audio-controls">
-        <button class="control-button" onclick="togglePlayPause('audio-devils', this)">
-          <i class="fas fa-play"></i>
-        </button>
-		<span class="current-time" id="current-time-devils">0:00</span> / 
-        <span class="track-duration" id="duration-devils">0:00</span>
-      </div>
-      <audio id="audio-devils" src="Audio/devils.mp3"></audio>
-
-      <!-- The Master -->
-      <div class="player-header">
-        <div class="track-info">
-          <h3 class="track-title">The Master</h3>
-        </div>
-      </div>
-      <div class="waveform">
-        <div class="progress-bar" id="progress-bar-the_master"></div>
-      </div>
-      <div class="audio-controls">
-        <button class="control-button" onclick="togglePlayPause('audio-the_master', this)">
-          <i class="fas fa-play"></i>
-        </button>
-		<span class="current-time" id="current-time-the_master">0:00</span> / 
-        <span class="track-duration" id="duration-the_master">0:00</span>
-      </div>
-      <audio id="audio-the_master" src="Audio/the_master.mp3"></audio>
-
-      <!-- Unsound -->
-      <div class="player-header">
-        <div class="track-info">
-          <h3 class="track-title">Unsound</h3>
-        </div>
-      </div>
-      <div class="waveform">
-        <div class="progress-bar" id="progress-bar-unsound"></div>
-      </div>
-      <div class="audio-controls">
-        <button class="control-button" onclick="togglePlayPause('audio-unsound', this)">
-          <i class="fas fa-play"></i>
-        </button>
-		<span class="current-time" id="current-time-unsound">0:00</span> / 
-        <span class="track-duration" id="duration-unsound">0:00</span>
-      </div>
-      <audio id="audio-unsound" src="Audio/unsound.mp3"></audio>
-    </div>
-  </div>
-</div>
-
-<!-- Shop Section -->
-<div class="section shop-section">
-	<div class="section-overlay">
-	  <h1>Shop</h1>
-	  <p>Click Image to Visit Our Online Shop!</p>
-	  <div class="shop-images">
-		<a href="https://metalsixshop.com/item1" target="_blank">
-		  <img src="Images/Short_Sleeve_Logo.png" alt="Shop Item 1" class="image">
-		</a>
-		<a href="https://metalsixshop.com/item2" target="_blank">
-		  <img src="Images/Long_Sleeve.png" alt="Shop Item 2" class="image">
-		</a>
-		<a href="https://metalsixshop.com/item3" target="_blank">
-		  <img src="Images/Short_Sleeve_Blade.png" alt="Shop Item 3" class="image">
-		</a>
-	  </div>
-	</div>
-  </div>
-
-  <!-- News Section -->
-  <div class="section news-section">
-    <div class="section-overlay">
-      <h1>News</h1>
-      <p>Currently working on an EP to be self-released later this year. This release will be available on CD & Digital download as well as via bundled items on our online store.</p>
-      <p>Join the Metalheads Facebook group, a place to share & discuss anything related to Metal!</p>
-	  <div>
-		<h2>Video</h2>
-	  </div>
-	  <div>
-        <iframe src="https://www.youtube.com/embed/90blAPFxabg" frameborder="0" allowfullscreen class="video"></iframe>
-        <p>Animated video for The Master by Metalsix.</p>
+    <div id="email-popup" class="popup" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-describedby="newsletter-description" aria-hidden="true">
+      <div class="popup-content">
+        <button class="popup-close" type="button" aria-label="Close newsletter signup">&times;</button>
+        <h2 id="newsletter-title">Join the Metalheads</h2>
+        <p id="newsletter-description">Get new music, release news, and exclusive offers by email.</p>
+        <form id="email-form" action="https://metalsix.us20.list-manage.com/subscribe/post?u=d9a72fb0d01fad9c23cfd0a03&amp;id=9afacad44d&amp;f_id=005a5feef0" method="post" target="_blank" rel="noopener">
+          <label for="email-input">Email address</label>
+          <input type="email" id="email-input" name="EMAIL" autocomplete="email" placeholder="you@example.com" required>
+          <div class="honeypot" aria-hidden="true" inert>
+            <label for="newsletter-company">Leave this field blank</label>
+            <input type="text" id="newsletter-company" name="b_d9a72fb0d01fad9c23cfd0a03_9afacad44d" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="popup-submit">Subscribe</button>
+          <p class="form-note">Subscription opens securely through Mailchimp.</p>
+        </form>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-	<p>Contact: <a href="mailto:matt@metalsix.com">matt@metalsix.com</a> | &copy; 2025 METALSIX All Rights Reserved</p>
-  </footer>
+    <main id="main-content">
+      <section class="section about-section" aria-labelledby="hero-title">
+        <div class="section-overlay hero-content">
+          <h1 id="hero-title">Old-School Instrumental Death Metal</h1>
+          <img src="Images/Metalsix_Logo_White.png" alt="Metalsix" class="hero-logo fade-in-image" width="3021" height="1359">
+          <p class="hero-tagline">Chaotic darkness unleashed</p>
+          <p>Brutal chugging riffs and bone-crushing drums.</p>
+          <a href="#music" class="button">Hear the Music</a>
+        </div>
+      </section>
 
-  <script>
-	// Open Popup After Delay
-	document.addEventListener('DOMContentLoaded', () => {
-	  const popup = document.getElementById('email-popup');
-	  const closeButton = document.querySelector('.popup-close');
-  
-	  // Show popup after 3 seconds (adjust as needed)
-	  setTimeout(() => {
-		popup.style.display = 'flex';
-	  }, 3000);
-  
-	  // Close popup when "X" is clicked
-	  closeButton.addEventListener('click', () => {
-		popup.style.display = 'none';
-	  });
-  
-	  // Close popup when clicking outside the content box
-	  popup.addEventListener('click', (event) => {
-		if (event.target === popup) {
-		  popup.style.display = 'none';
-		}
-	  });
-  
-	  // Handle form submission
-	  const form = document.getElementById('email-form');
-	  form.addEventListener('submit', (event) => {
-		const email = document.getElementById('email-input').value;
-		alert(`Thank you for subscribing, ${email}!`);
-		popup.style.display = 'none';
-	  });
-	});
-  </script>
-</body>
+      <section id="music" class="section music-section" aria-labelledby="music-title">
+        <div class="section-overlay">
+          <h2 id="music-title" class="section-title">Music</h2>
+          <div class="album-grid">
+            <img src="Images/Viking Funeral.jpg" alt="Viking Funeral single artwork" width="300" height="300">
+            <img src="Images/Devils.jpg" alt="Devils single artwork" width="300" height="300" loading="lazy">
+            <img src="Images/The Master.jpg" alt="The Master single artwork" width="300" height="300" loading="lazy">
+            <img src="Images/Skeletons.jpg" alt="Skeletons single artwork" width="300" height="300" loading="lazy">
+            <img src="Images/Unsound.jpg" alt="Unsound single artwork" width="300" height="300" loading="lazy">
+          </div>
+          <p class="release-callout">New music is in production.</p>
+          <div class="button-row">
+            <a href="https://open.spotify.com/artist/1xVHS0RWa8JxRRHK8wIK8u" target="_blank" rel="noopener noreferrer" class="button">Spotify</a>
+            <a href="https://music.apple.com/us/artist/metalsix/1475066050" target="_blank" rel="noopener noreferrer" class="button">Apple Music</a>
+            <button type="button" class="button" data-open-newsletter>Get Updates</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bio-section" aria-labelledby="bio-title">
+        <div class="section-overlay prose">
+          <h2 id="bio-title" class="section-title">Bio</h2>
+          <p>Metalsix creates original old-school instrumental death metal built around crushing rhythmic guitar riffs. New material is currently in production, with songs streaming on Spotify and Apple Music and official merchandise available at <a href="https://metalsixshop.com/" target="_blank" rel="noopener noreferrer">metalsixshop.com</a>.</p>
+          <p>If you’re a metalhead, turn it up.</p>
+          <h2 class="section-title reviews-title">Reviews</h2>
+          <blockquote class="reviews">
+            <p>“Holy shit, man, that riff was heavy as pulling a tank with bare hands.”</p>
+            <p>“Pretty fucking heavy, my friend.”</p>
+            <p>“That is such a throaty tone, and I dig it!”</p>
+            <p>“Super-heavy killer stuff.”</p>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="listen" class="section listen-section" aria-labelledby="listen-title">
+        <div class="section-overlay">
+          <h2 id="listen-title" class="section-title">Listen</h2>
+          <div class="dark-audio-player">
+            <article class="track" data-track="viking_funeral">
+              <h3>Viking Funeral</h3>
+              <button class="waveform" type="button" data-seek-for="audio-viking_funeral" aria-label="Seek through Viking Funeral">
+                <span class="progress-bar" id="progress-bar-viking_funeral"></span>
+              </button>
+              <div class="audio-controls">
+                <button class="control-button" type="button" data-audio-id="audio-viking_funeral" aria-label="Play Viking Funeral"><i class="fas fa-play" aria-hidden="true"></i></button>
+                <span><span id="current-time-viking_funeral">0:00</span> / <span id="duration-viking_funeral">0:00</span></span>
+              </div>
+              <audio id="audio-viking_funeral" preload="metadata" src="Audio/viking_funeral.mp3"></audio>
+            </article>
+
+            <article class="track" data-track="devils">
+              <h3>Devils</h3>
+              <button class="waveform" type="button" data-seek-for="audio-devils" aria-label="Seek through Devils">
+                <span class="progress-bar" id="progress-bar-devils"></span>
+              </button>
+              <div class="audio-controls">
+                <button class="control-button" type="button" data-audio-id="audio-devils" aria-label="Play Devils"><i class="fas fa-play" aria-hidden="true"></i></button>
+                <span><span id="current-time-devils">0:00</span> / <span id="duration-devils">0:00</span></span>
+              </div>
+              <audio id="audio-devils" preload="metadata" src="Audio/devils.mp3"></audio>
+            </article>
+
+            <article class="track" data-track="the_master">
+              <h3>The Master</h3>
+              <button class="waveform" type="button" data-seek-for="audio-the_master" aria-label="Seek through The Master">
+                <span class="progress-bar" id="progress-bar-the_master"></span>
+              </button>
+              <div class="audio-controls">
+                <button class="control-button" type="button" data-audio-id="audio-the_master" aria-label="Play The Master"><i class="fas fa-play" aria-hidden="true"></i></button>
+                <span><span id="current-time-the_master">0:00</span> / <span id="duration-the_master">0:00</span></span>
+              </div>
+              <audio id="audio-the_master" preload="metadata" src="Audio/the_master.mp3"></audio>
+            </article>
+
+            <article class="track" data-track="unsound">
+              <h3>Unsound</h3>
+              <button class="waveform" type="button" data-seek-for="audio-unsound" aria-label="Seek through Unsound">
+                <span class="progress-bar" id="progress-bar-unsound"></span>
+              </button>
+              <div class="audio-controls">
+                <button class="control-button" type="button" data-audio-id="audio-unsound" aria-label="Play Unsound"><i class="fas fa-play" aria-hidden="true"></i></button>
+                <span><span id="current-time-unsound">0:00</span> / <span id="duration-unsound">0:00</span></span>
+              </div>
+              <audio id="audio-unsound" preload="metadata" src="Audio/unsound.mp3"></audio>
+            </article>
+            <p id="audio-status" class="audio-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shop-section" aria-labelledby="shop-title">
+        <div class="section-overlay">
+          <h2 id="shop-title" class="section-title">Shop</h2>
+          <p>Visit the online shop for official Metalsix merchandise.</p>
+          <div class="shop-grid">
+            <a href="https://metalsixshop.com/" target="_blank" rel="noopener noreferrer"><img src="Images/Short_Sleeve_Logo.png" alt="Metalsix logo short-sleeve shirt" width="300" height="300" loading="lazy"></a>
+            <a href="https://metalsixshop.com/" target="_blank" rel="noopener noreferrer"><img src="Images/Long_Sleeve.png" alt="Metalsix long-sleeve shirt" width="300" height="300" loading="lazy"></a>
+            <a href="https://metalsixshop.com/" target="_blank" rel="noopener noreferrer"><img src="Images/Short_Sleeve_Blade.png" alt="Metalsix blade short-sleeve shirt" width="300" height="300" loading="lazy"></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section news-section" aria-labelledby="news-title">
+        <div class="section-overlay prose">
+          <h2 id="news-title" class="section-title">News</h2>
+          <p>A new independently released EP is currently in production. It is planned for CD and digital release, along with bundled items in the online store.</p>
+          <p>Follow Metalsix on social media for studio updates and release news.</p>
+          <h3>Featured Video</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/90blAPFxabg" title="The Master by Metalsix animated music video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <p>Animated video for “The Master” by Metalsix.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Contact: <a href="mailto:matt@metalsix.com">matt@metalsix.com</a> <span aria-hidden="true">|</span> &copy; 2026 Metalsix. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
